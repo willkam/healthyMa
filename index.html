@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 0
+			}
+			div{
+				display: flex;
+				justify-contend: center;
+				align-item: center;
+				display: block;
+				
+			}
+			
+			img{
+				width: auto;
+				height: auto;
+				max-width: 100%;
+				max-height: 100%;
+			}
+			
+			#time{
+				position: relative;
+				left: 106px;
+				bottom: 930px;
+				font-size: 20px;
+			}
+
+
+        </style>
+		
+	</head>
+	<body>
+        <div style="position: fixed">
+		<img src="head.png" width="1170" height="274" alt=""/>
+		</div>		
+		
+		<div>
+			
+			<div>
+			<img src="body.png" alt=""/>
+			</div>
+			 <p id="time"></p>
+			<p style="font-size: 10px; font-weight: lighter; color: #ffffff; position: relative; left: 55px; bottom: 585px;">2022-06-02 19:08</p>
+		</div>
+		
+		<script>
+			function time(){
+				var date = new Date();
+				var year = date.getFullYear();//年
+				var month = date.getMonth()+1;//月；因为month属性从0开始所以要加1				
+				var day = date.getDate();//天		
+				//var week = date.getDay();//周
+				var hour = date.getHours();//小时
+				var minute = date.getMinutes();//分钟
+				var second = date.getSeconds();//秒
+				second = second<10?"0"+second:second;
+				var currentTime = year+"-0"+month+"-0"+day+" "+" "+hour+":"+minute+":"+second;
+				document.getElementById("time").innerHTML=currentTime;
+			}
+			setInterval("time()",1000);//每隔1000毫秒（1秒=1000毫秒）显示一次当前时间
+		</script>
+	
+	</body>
+</html>
