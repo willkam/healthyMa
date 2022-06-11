@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style type="text/css">
+    body {
+      margin: 0
+    }
+
+    #content {
+      height: 3268px;
+      width: 1170px;
+      background-image: url(body.png);
+      padding-top: 143px;
+    }
+
+    #topBar {
+      position: fixed;
+    }
+
+    #timeSpan {
+      font-size: 50px;
+      text-align: center;
+      padding-top: 420px;
+    }
+
+    #timeSpan2 {
+      font-size: 40px;
+      margin-top: 1100px;
+      margin-left: 150px;
+      color: white;
+    }
+
+    #second {
+      font-weight: bold;
+      color: rgb(63, 140, 239)
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="root">
+
+    <div id="topBar">
+      <img src="head.png" />
+    </div>
+
+    <div id="content">
+      <div id="timeSpan">
+        <span id="year"></span>-<span id="month"></span>-<span id="day"></span>
+        <span id="min"></span>:<span id="hour"></span>:<span id="second"></span>
+      </div>
+      <div style="clear:both;"></div>
+      <div id="timeSpan2">
+        <span id="year2"></span>-<span id="month2"></span>-<span id="day2"></span>
+        <span id="min2"></span>:<span id="hour2"></span>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    setInterval(function () {
+      var now = new Date(), year = now.getFullYear(), month = now.getMonth() + 1, day = now.getDate();
+      var hour = now.getHours(), minute = now.getMinutes(), seconds = now.getSeconds();
+      console.log(year + " " + month + " " + day + " " + hour + " " + minute + " " + seconds);
+      setText("year", year);
+      setText("month", month);
+      setText("day", day);
+      setText("min", hour);
+      setText("hour", minute);
+      setText("second", seconds);
+
+      var dateTime = new Date();
+      dateTime = dateTime.setDate(dateTime.getDate() - 1);
+      dateTime = new Date(dateTime);
+      var year2 = dateTime.getFullYear(), month2 = dateTime.getMonth() + 1, day2 = dateTime.getDate();
+      var hour2 = dateTime.getHours(), minute2 = dateTime.getMinutes();
+
+      setText("year2", year2);
+      setText("month2", month2);
+      setText("day2", day2);
+      setText("min2", hour2);
+      setText("hour2", minute2);
+    }, 1000);
+    function setText(id, value) {
+      value = value < 10 ? "0" + value : value;
+      document.getElementById(id).innerText = value;
+    }
+  </script>
+
+</body>
+
+</html>
